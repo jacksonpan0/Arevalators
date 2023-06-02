@@ -1,4 +1,8 @@
+package Main;
 import javax.swing.JPanel;
+
+import Entity.Player;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -7,7 +11,7 @@ public class GamePanel extends JPanel implements Runnable {
     //Values for size of tile within screen and determine scale of character and other objects
     final int originalTileSize = 16;
     final int scale = 3;
-    final int tileSize = originalTileSize * scale;
+    public final int tileSize = originalTileSize * scale;
     final int maxScreenCol = 16;
     final int maxScreenRow = 12;
     final int screenWidth = tileSize * maxScreenCol;
@@ -22,6 +26,8 @@ public class GamePanel extends JPanel implements Runnable {
     KeyReader keyRead = new KeyReader();
     //Instantiate game thread
     Thread gameThread;
+    //Create new Player object
+    Player newPlayer = new Player(this, keyRead);
     //Create game panel
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -58,25 +64,13 @@ public class GamePanel extends JPanel implements Runnable {
     }
     //Update method used to change player location
     public void update() {
-        if(keyRead.upBool == true) {
-            playerY -= playerSpeed;
-        }
-        else if(keyRead.leftBool) {
-            playerX -= playerSpeed;
-        }
-        else if(keyRead.downBool == true) {
-            playerY += playerSpeed;
-        }
-        else if(keyRead.rightBool == true) {
-            playerX += playerSpeed;
-        }
+        newPlayer.update();
     }
     //Paint component used to draw objects in game panel
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.black);
-        g2.fillRect(playerX, playerY, tileSize, tileSize);
+        newPlayer.draw(g2);
         g2.dispose();
     }
 }
