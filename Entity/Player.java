@@ -19,6 +19,7 @@ public class Player extends Entity {
         this.gp = gp;
         this.keyRead = keyRead;
         setDefValues();
+        getPlayerImage();
     }
 
     public void setDefValues() {
@@ -29,14 +30,14 @@ public class Player extends Entity {
     }
 
     public void getPlayerImage() {
-        File f1 = new File("../Main/player/boy_up_1-1.png.png");
-        File f2 = new File("../Main/player/boy_up_2-1.png.png");
-        File f3 = new File("../Main/player/boy_down_1-1.png.png");
-        File f4 = new File("../Main/player/boy_down_2-1.png.png");
-        File f5 = new File("../Main/player/boy_left_1-1.png.png");
-        File f6 = new File("../Main/player/boy_left_2-1.png.png");
-        File f7 = new File("../Main/player/boy_right_1-1.png.png");
-        File f8 = new File("../Main/player/boy_right_2-1.png.png");
+        File f1 = new File("./Main/player/boy_up_1.png");
+        File f2 = new File("./Main/player/boy_up_2.png");
+        File f3 = new File("./Main/player/boy_down_1.png");
+        File f4 = new File("./Main/player/boy_down_2.png");
+        File f5 = new File("./Main/player/boy_left_1.png");
+        File f6 = new File("./Main/player/boy_left_2.png");
+        File f7 = new File("./Main/player/boy_right_1.png");
+        File f8 = new File("./Main/player/boy_right_2.png");
         try {
             up1 = ImageIO.read(f1);
             up2 = ImageIO.read(f2);
