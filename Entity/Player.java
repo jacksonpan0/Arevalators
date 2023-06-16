@@ -52,21 +52,34 @@ public class Player extends Entity {
         }
     }
     public void update() {
-        if(keyRead.upBool == true) {
-            direction = "up";
-            y -= speed;
-        }
-        else if(keyRead.leftBool) {
-            direction = "left";
-            x -= speed;
-        }
-        else if(keyRead.downBool == true) {
-            direction = "down";
-            y += speed;
-        }
-        else if(keyRead.rightBool == true) {
-            direction = "right";
-            x += speed;
+        if(keyRead.upBool == true || keyRead.leftBool == true || keyRead.downBool == true || keyRead.rightBool == true) {
+            if(keyRead.upBool == true) {
+                direction = "up";
+                y -= speed;
+            }
+            else if(keyRead.leftBool == true) {
+                direction = "left";
+                x -= speed;
+            }
+            else if(keyRead.downBool == true) {
+                direction = "down";
+                y += speed;
+            }
+            else if(keyRead.rightBool == true) {
+                direction = "right";
+                x += speed;
+            }
+
+            spriteCounter++;
+            if(spriteCounter > 17) {
+                if(spriteNum == 1) {
+                    spriteNum = 2;
+                }
+                else if(spriteNum == 2) {
+                    spriteNum = 1;
+                }
+                spriteCounter = 0;
+            }
         }
     }
 
