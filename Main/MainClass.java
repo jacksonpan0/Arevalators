@@ -1,6 +1,20 @@
 package Main;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
 public class MainClass {
+    //Sound component method
+    public void sound() {
+        try {
+            AudioInputStream gameMusic = AudioSystem.getAudioInputStream(this.getClass().getResource("ProjectMusic.wav"));
+            Clip audioClip = AudioSystem.getClip();
+            audioClip.open(gameMusic);
+            audioClip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     //Main Method
     public static void main(String[] args) {
         //Create window for game panel
@@ -17,5 +31,7 @@ public class MainClass {
         window.setVisible(true);
         //Start game thread
         gamePanel.startGameThread();
+        MainClass newGame = new MainClass();
+        newGame.sound();
     }
 }
