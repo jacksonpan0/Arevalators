@@ -1,6 +1,7 @@
 package Entity;
 import java.awt.image.BufferedImage;
 public class Entity {
+    //Global variables (used for generating character images and motion)
     public int x;
     public int y;
     public int speed;
