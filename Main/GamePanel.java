@@ -20,6 +20,8 @@ public class GamePanel extends JPanel implements Runnable {
     //World Setting Parameters
     public final int maxWorldCol = 50;
     public final int maxWorldRow = 50;
+    public final int worldWidth = tileSize * maxWorldCol;
+    public final int worldHeight = tileSize * maxWorldRow;
     //FPS value
     int FPS = 60;
     //Instantiante Key Handler
@@ -27,7 +29,7 @@ public class GamePanel extends JPanel implements Runnable {
     //Instantiate game thread
     Thread gameThread;
     //Create new Player object
-    Player newPlayer = new Player(this, keyRead);
+    public Player newPlayer = new Player(this, keyRead);
     //Tile Manager
     tileManager tileM = new tileManager(this);
     //Create game panel
