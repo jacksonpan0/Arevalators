@@ -83,7 +83,12 @@ public class tileManager {
             int screenX = worldX - gp.newPlayer.worldX + gp.newPlayer.screenX;
             int screenY = worldY - gp.newPlayer.worldY + gp.newPlayer.screenY;
 
-            g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+            if(worldX + gp.tileSize > gp.newPlayer.worldX - gp.newPlayer.screenX && 
+               worldX - gp.tileSize < gp.newPlayer.worldX + gp.newPlayer.screenX &&
+               worldY + gp.tileSize > gp.newPlayer.worldY - gp.newPlayer.screenY && 
+               worldY - gp.tileSize < gp.newPlayer.worldY + gp.newPlayer.screenY) {
+                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+            }
             worldCol++;
             if(worldCol == gp.maxWorldCol) {
                 worldCol = 0;

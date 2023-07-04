@@ -6,6 +6,7 @@ public class KeyReader implements KeyListener {
     public boolean leftBool;
     public boolean downBool;
     public boolean rightBool;
+    public boolean startGame;
     public void keyTyped(KeyEvent e) {
 
     }
@@ -23,6 +24,9 @@ public class KeyReader implements KeyListener {
         if(code == KeyEvent.VK_D) {
             rightBool = true;
         }
+        if(code == KeyEvent.VK_B) {
+            startGame = true;
+        }
     }
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
@@ -37,6 +41,9 @@ public class KeyReader implements KeyListener {
         }
         if(code == KeyEvent.VK_D) {
             rightBool = false;
+        }
+        if(code == KeyEvent.VK_B) {
+            startGame = false;
         }
     }
 }

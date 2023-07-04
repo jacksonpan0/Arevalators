@@ -1,12 +1,17 @@
 package Main;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Entity.Player;
 import Main.tileC.tileManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 public class GamePanel extends JPanel implements Runnable { 
     //Values for size of tile within screen and determine scale of character and other objects
@@ -22,6 +27,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxWorldRow = 50;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
+    //Start boolean
+    public static boolean start;
     //FPS value
     int FPS = 60;
     //Instantiante Key Handler
@@ -32,6 +39,8 @@ public class GamePanel extends JPanel implements Runnable {
     public Player newPlayer = new Player(this, keyRead);
     //Tile Manager
     tileManager tileM = new tileManager(this);
+    //Start screen JPanel
+    public static JPanel startScreen = new JPanel();
     //Create game panel
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -77,5 +86,17 @@ public class GamePanel extends JPanel implements Runnable {
         tileM.draw(g2);
         newPlayer.draw(g2);
         g2.dispose();
+    }
+    public void startGame(JFrame window) {
+        window.setLayout(new GridBagLayout());
+        startScreen.setPreferredSize(new Dimension(768, 576));
+        JLabel title = new JLabel("Arevalators");
+        title.setFont(new Font("Gothic", 1, 20));
+        startScreen.add(title);
+        window.add(startScreen, new GridBagConstraints());
+        window.setPreferredSize(new Dimension(768, 576));
+        window.setLocationRelativeTo(null);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setVisible(true);
     }
 }

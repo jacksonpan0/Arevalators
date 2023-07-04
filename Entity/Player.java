@@ -5,6 +5,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JPanel;
+
 import Main.GamePanel;
 import Main.KeyReader;
 
@@ -54,7 +56,8 @@ public class Player extends Entity {
         }
     }
     public void update() {
-        if(keyRead.upBool == true || keyRead.leftBool == true || keyRead.downBool == true || keyRead.rightBool == true) {
+        if(keyRead.upBool == true || keyRead.leftBool == true || keyRead.downBool == true || keyRead.rightBool == true
+        || keyRead.startGame == true) {
             if(keyRead.upBool == true) {
                 direction = "up";
                 worldY -= speed;
@@ -70,6 +73,9 @@ public class Player extends Entity {
             else if(keyRead.rightBool == true) {
                 direction = "right";
                 worldX += speed;
+            }
+            else if(keyRead.startGame == true) {
+                updateStart(GamePanel.startScreen);
             }
 
             spriteCounter++;
@@ -123,4 +129,9 @@ public class Player extends Entity {
         }
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
     }
+
+    public void updateStart(JPanel startScreen) {
+            startScreen.setVisible(false);
+    }
+
 }

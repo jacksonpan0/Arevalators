@@ -10,6 +10,7 @@ public class MainClass {
             AudioInputStream gameMusic = AudioSystem.getAudioInputStream(this.getClass().getResource("ProjectMusic.wav"));
             Clip audioClip = AudioSystem.getClip();
             audioClip.open(gameMusic);
+            audioClip.loop(Clip.LOOP_CONTINUOUSLY);
             audioClip.start();
         } catch (Exception e) {
             e.printStackTrace();
@@ -29,9 +30,12 @@ public class MainClass {
         window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
+        //Start screen
+        gamePanel.startGame(window);
         //Start game thread
         gamePanel.startGameThread();
         MainClass newGame = new MainClass();
+        //Sound method
         newGame.sound();
     }
 }
